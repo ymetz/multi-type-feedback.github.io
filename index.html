@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Reward Learning from Multiple Feedback Types">
+  <meta name="keywords" content="RLHF, reinforcement learning from human feedback, multiple feedback types, multi-type feedback, reward learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reward Learning from Multiple Feedback Types</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>!-->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://multi-type-feedback.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://rlhfblender.info/">
+            RLHF Blender
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2411.11761">
+            Feedback Type Survey
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Reward Learning from Multiple Feedback Types</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yannickmetz.me">Yannick Metz</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/andrasgeiszl/">Andras Geiszl</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://ivia.ch/people/baur">Raphaël Baur</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ivia.ch/people/elassady">Mennatallah El-Assady</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Konstanz,</span>
+            <span class="author-block"><sup>2</sup>ETH Zurich</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!--<span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>!-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ymetz/multi-type-feedbacl"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!--<span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>!-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="subtitle has-text-centered">
+        We present a framework for generation of artifical feedback of six feedback types, and present a comparison of reward models and RL training across multiple environments.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+        <image src="./static/images/feedback_generation.png" alt="Teaser Image" style="width: 100%;"/>
+        <p class="has-text-centered">Feedback generation process</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Learning rewards from preference feedback has become an important tool in the alignment of agentic models. 
+            Preference-based feedback, often implemented as a binary comparison between multiple completions, is an established method to acquire large-scale human feedback. 
+            However, human feedback in other contexts is often much more diverse. Such diverse feedback can better support the goals of a human annotator, 
+            and the simultaneous use of multiple sources might be mutually informative for the learning process or carry type-dependent biases for the reward learning process.
+            
+          </p>
+          <p>
+            Despite these potential benefits, learning from different feedback types has yet to be explored extensively.
+            In this paper, we bridge this gap by enabling experimentation and evaluating multi-type feedback in a broad set of environments. 
+            We present a process to generate high-quality simulated feedback of six different types. 
+            Then, we implement reward models and downstream RL training for all six feedback types.
+            Based on the simulated feedback, we investigate the use of types of feedback across five RL environments and compare them to pure preference-based baselines. 
+            We show empirically that diverse types of feedback can be utilized and lead to strong reward modeling performance.
+          </p>
+          <p>
+            This work is the first strong indicator of the potential of multi-type feedback for RLHF.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Feedback Generation</h2>
+          <p>
+            We implemented a synthetic feedback generation process to simulate six different feedback types: Ratings,
+            Preferences, Demonstrations, Corrections, Descriptions and Descriptive Preferences. The framework can generate
+            feedback for a series of supported environments, inclduing Mujoco, Meta-World, Atari, and Highway-Env.
+          </p>
+          <image src="./static/images/feedback_generation.png" alt="Feedback Generation" style="width: 100%;"/>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-3">Reward Models</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              We implemented reward models for each of the six feedback types, based on foundational principles like reward rational choice,
+              and scalar reward models. We analyze the learned reward functions and compare them to the ground-truth rewards for different
+              environments.
+            </p>
+            <image src="./static/images/rewfunc_correlations.png" alt="Reward Model Analysis" style="width: 100%;"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">RL Benchmarks</h2>
+          <p>
+            We evaluated the performance of the different feedback types by training RL agents in a set of different environments,
+            including ground-truth reward and behavioral cloning as baselines.
+          </p>
+          <image src="./static/images/benchmark_results.png" alt="RL Benchmark Results" style="width: 100%;"/>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-3">Reward Function Ensembles</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              We implemented an initial version of a reward function ensemble, combining the reward models of the different feedback types.
+              We evaluate the performance of the ensemble in comparison to the individual reward models, and showcase the potential of
+              combining different feedback types for reward learning.
+            </p>
+            <image src="./static/images/rew_ensemble.png" alt="Reward Model Analysis" style="width: 100%;"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Work</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our work is in a series of recent efforts to expand the space of feedback types for RLHF:
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2308.04332">RLHF-Blender</a> presents an architecture and user interface implementation for the collection of multiple feedback types.
+            Our work ties into this by implementing reward models and RL agent training for the feedback types collected by RLHF-Blender.
+            Going beyond synthetic feedback generation by incorporating human feedback is an exiting next step in this research direction.
+          </p>
+          <p>
+            Our recent <a href="https://arxiv.org/abs/2411.11761">Survey on the Space of Human Feedback</a> presents a survey of feedback types used in RLHF research and beyond.
+            Our work contributes to this by providing a comprehensive evaluation of the performance of different feedback types in a broad set of environments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{metz2025reward,
+  author    = {Metz, Yannick and Geiszl, Andras and Baur, Raphaël and El-Assady, Mennatallah},
+  title     = {Reward Learning from Multiple Feedback Types},
+  journal   = {ICLR},
+  year      = {2025},
+  url       = {https://openreview.net/forum?id=9Ieq8jQNAl}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://openreview.net/pdf?id=9Ieq8jQNAl">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/ymetz/multi-type-feedback" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This page was was adopted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+            We thank the authors for making their code available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
