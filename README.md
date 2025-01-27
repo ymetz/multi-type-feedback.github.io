@@ -3,11 +3,12 @@
 This repository is based on the original source code for the [Nerfies website](https://nerfies.github.io).
 
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@article{metz2025reward,
+  author    = {Metz, Yannick and Geiszl, Andras and Baur, Raphaël and El-Assady, Mennatallah},
+  title     = {Reward Learning from Multiple Feedback Types},
+  journal   = {ICLR},
+  year      = {2025},
+  url       = {https://openreview.net/forum?id=9Ieq8jQNAl}
 }
 ```
 
