@@ -89,7 +89,7 @@
             <span class="author-block">
               <a href="https://www.linkedin.com/in/andrasgeiszl/">Andras Geiszl</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://ivia.ch/people/baur">Raphaël Baur</a><sup>2</sup>,
+              <a href="https://www.raphaelbaur.com">Raphaël Baur</a><sup>2</sup>,
             </span>
             <span class="author-block">
               <a href="https://ivia.ch/people/elassady">Mennatallah El-Assady</a><sup>2</sup>,
@@ -177,7 +177,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
-        <image src="./static/images/feedback_generation.png" alt="Teaser Image" style="width: 100%;"/>
+        <image src="./static/images/teaser_figure.png" alt="Teaser Image" style="width: 100%;"/>
         <p class="has-text-centered">Feedback generation process</p>
     </div>
   </div>
@@ -192,20 +192,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Learning rewards from preference feedback has become an important tool in the alignment of agentic models. 
-            Preference-based feedback, often implemented as a binary comparison between multiple completions, is an established method to acquire large-scale human feedback. 
-            However, human feedback in other contexts is often much more diverse. Such diverse feedback can better support the goals of a human annotator, 
-            and the simultaneous use of multiple sources might be mutually informative for the learning process or carry type-dependent biases for the reward learning process.
-            
+            Learning rewards from preference feedback has become an important tool in the alignment of agentic models. Preference-based feedback, often implemented as a binary comparison between multiple completions, is an established method to acquire large-scale human feedback. However, human feedback in other contexts is often much more diverse. Such diverse feedback can better support the goals of a human annotator, and the simultaneous use of multiple sources might be mutually informative for the learning process or carry type-dependent biases for the reward learning process.
           </p>
           <p>
-            Despite these potential benefits, learning from different feedback types has yet to be explored extensively.
-            In this paper, we bridge this gap by enabling experimentation and evaluating multi-type feedback in a broad set of environments. 
-            We present a process to generate high-quality simulated feedback of six different types. 
-            Then, we implement reward models and downstream RL training for all six feedback types.
-            Based on the simulated feedback, we investigate the use of types of feedback across five RL environments and compare them to pure preference-based baselines. 
-            We show empirically that diverse types of feedback can be utilized and lead to strong reward modeling performance.
-          </p>
+            In this paper, we bridge this gap by enabling experimentation and evaluating multi-type feedback in a broad set of environments. We present a process to generate high-quality simulated feedback of six different types. Then, we implement reward models and downstream RL training for all six feedback types.
+            Based on the simulated feedback, we investigate the use of types of feedback across five RL environments and compare them to pure preference-based baselines. We show empirically that diverse types of feedback can be utilized and lead to strong reward modeling performance.
           <p>
             This work is the first strong indicator of the potential of multi-type feedback for RLHF.
           </p>
@@ -216,12 +207,23 @@
   </div>
 </section>
 
-
+<!-- Contributions -->
 <section class="section">
   <div class="container is-max-desktop">
 
-    <div class="columns is-centered">
+    <div class="column">
+      <div class="content">
+        <h2 class="title is-3">Feedback Modeling</h2>
+        <p>
+          As a continuation of <a href="https://rlhfblender.info/">our previous work</a> we define six different feedback models and categorize them broadly <i>Evaluative Feedback</i>, <i>Instructional Feedback</i>, and <i>Descriptive Feedback</i>.
+          Each of these higher-level categories contains a direct and a contrastive feedback type.
+          Evaluative Feedback includes <b>Ratings</b> and <b>Comparisons</b>, elicited through a direct rating of a single trajectory or a preference between two trajectories, respectively.
+          Characterized by the instructional role of the feedback provider, Instructional Feedback contains <b>Demonstrations</b> and <b>Corrections</b>.
+          Finally, Descriptive Feedback contains <b>Descriptions</b> and <b>Descriptive Preferences</b>, for which the feedback provider describes relevant features of the agent's observation.
+      </div>
+    </div>
 
+    <div class="columns is-centered">
       <div class="column">
         <div class="content">
           <h2 class="title is-3">Feedback Generation</h2>
@@ -278,30 +280,31 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Work</h2>
 
-        <div class="content has-text-justified">
-          <p>
-            Our work is in a series of recent efforts to expand the space of feedback types for RLHF:
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2308.04332">RLHF-Blender</a> presents an architecture and user interface implementation for the collection of multiple feedback types.
-            Our work ties into this by implementing reward models and RL agent training for the feedback types collected by RLHF-Blender.
-            Going beyond synthetic feedback generation by incorporating human feedback is an exiting next step in this research direction.
-          </p>
-          <p>
-            Our recent <a href="https://arxiv.org/abs/2411.11761">Survey on the Space of Human Feedback</a> presents a survey of feedback types used in RLHF research and beyond.
-            Our work contributes to this by providing a comprehensive evaluation of the performance of different feedback types in a broad set of environments.
-          </p>
-        </div>
+<!-- Related Work -->
+<section>
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Related Work</h2>
+
+      <div class="content has-text-justified">
+        <p>
+          Our work is in a series of recent efforts to expand the space of feedback types for RLHF:
+        </p>
+        <p>
+          <a href="https://arxiv.org/abs/2308.04332">RLHF-Blender</a> presents an architecture and user interface implementation for the collection of multiple feedback types.
+          Our work ties into this by implementing reward models and RL agent training for the feedback types collected by RLHF-Blender.
+          Going beyond synthetic feedback generation by incorporating human feedback is an exiting next step in this research direction.
+        </p>
+        <p>
+          Our recent <a href="https://arxiv.org/abs/2411.11761">Survey on the Space of Human Feedback</a> presents a survey of feedback types used in RLHF research and beyond.
+          Our work contributes to this by providing a comprehensive evaluation of the performance of different feedback types in a broad set of environments.
+        </p>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
