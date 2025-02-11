@@ -22,8 +22,9 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>!-->
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -177,7 +178,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
-        <image src="./static/images/teaser_figure.png" alt="Teaser Image" style="width: 100%;"/>
+        <image src="./static/images/teaser_figure.jpg" alt="Teaser Image" style="width: 100%;"/>
         <p class="has-text-centered">Feedback generation process</p>
     </div>
   </div>
@@ -211,39 +212,43 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <div class="column">
-      <div class="content">
-        <h2 class="title is-3">Feedback Modeling</h2>
-        <p>
-          As a continuation of <a href="https://rlhfblender.info/">our previous work</a> we define six different feedback models and categorize them broadly <i>Evaluative Feedback</i>, <i>Instructional Feedback</i>, and <i>Descriptive Feedback</i>.
-          Each of these higher-level categories contains a direct and a contrastive feedback type.
-          Evaluative Feedback includes <b>Ratings</b> and <b>Comparisons</b>, elicited through a direct rating of a single trajectory or a preference between two trajectories, respectively.
-          Characterized by the instructional role of the feedback provider, Instructional Feedback contains <b>Demonstrations</b> and <b>Corrections</b>.
-          Finally, Descriptive Feedback contains <b>Descriptions</b> and <b>Descriptive Preferences</b>, for which the feedback provider describes relevant features of the agent's observation.
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Feedback Modeling</h2>
+          <p>
+            As a continuation of <a href="https://rlhfblender.info/">our previous work</a> we define six different feedback models and categorize them broadly <i>Evaluative Feedback</i>, <i>Instructional Feedback</i>, and <i>Descriptive Feedback</i>.
+            Each of these higher-level categories contains a direct and a contrastive feedback type.
+            Evaluative Feedback includes <b>Ratings</b> and <b>Comparisons</b>, elicited through a direct rating of a single trajectory or a preference between two trajectories, respectively.
+            Characterized by the instructional role of the feedback provider, Instructional Feedback contains <b>Demonstrations</b> and <b>Corrections</b>.
+            Finally, Descriptive Feedback contains <b>Descriptions</b> and <b>Descriptive Preferences</b>, for which the feedback provider describes relevant features of the agent's observation.
+        </div>
       </div>
     </div>
 
     <div class="columns is-centered">
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Feedback Generation</h2>
+          <h2 class="title is-3">Feedback Simulation</h2>
           <p>
-            We implemented a synthetic feedback generation process to simulate six different feedback types: Ratings,
-            Preferences, Demonstrations, Corrections, Descriptions and Descriptive Preferences. The framework can generate
-            feedback for a series of supported environments, inclduing Mujoco, Meta-World, Atari, and Highway-Env.
+            We present and implement a framework to generate synthetic feedback for all described feedback types in multiple benchmark RL-environments such as Mujoco, Meta-World, Atari and Highway-Env.
+            To investigate the robustness of the discussed feedback types to labeling-error, we systematically vary noise-levels across feedback types.
           </p>
           <image src="./static/images/feedback_generation.png" alt="Feedback Generation" style="width: 100%;"/>
         </div>
       </div>
+    </div>
 
+    <div class="columns is-centered">
       <div class="column">
-        <h2 class="title is-3">Reward Models</h2>
+        <h2 class="title is-3">Reward Modeling</h2>
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              We implemented reward models for each of the six feedback types, based on foundational principles like reward rational choice,
-              and scalar reward models. We analyze the learned reward functions and compare them to the ground-truth rewards for different
-              environments.
+              Based on the synthetic feedback, we learn reward functions consistent with the six feedback types.
+              We analyze the learned reward functions and compare them to the ground-truth rewards for different environments.
+              Suprisingly, we find that although some feedback types induce reward functions that show relatively low correlation with the ground-truth rewards,
+              they can still lead to strong RL performance.
             </p>
             <image src="./static/images/rewfunc_correlations.png" alt="Reward Model Analysis" style="width: 100%;"/>
           </div>
@@ -251,6 +256,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="columns is-centered">
 
@@ -264,7 +270,9 @@
           <image src="./static/images/benchmark_results.png" alt="RL Benchmark Results" style="width: 100%;"/>
         </div>
       </div>
+    </div>
 
+    <div class="columns is-centered">
       <div class="column">
         <h2 class="title is-3">Reward Function Ensembles</h2>
         <div class="columns is-centered">
@@ -285,24 +293,26 @@
 
 
 <!-- Related Work -->
-<section>
-  <div class="columns is-centered">
-    <div class="column is-full-width">
-      <h2 class="title is-3">Related Work</h2>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Work</h2>
 
-      <div class="content has-text-justified">
-        <p>
-          Our work is in a series of recent efforts to expand the space of feedback types for RLHF:
-        </p>
-        <p>
-          <a href="https://arxiv.org/abs/2308.04332">RLHF-Blender</a> presents an architecture and user interface implementation for the collection of multiple feedback types.
-          Our work ties into this by implementing reward models and RL agent training for the feedback types collected by RLHF-Blender.
-          Going beyond synthetic feedback generation by incorporating human feedback is an exiting next step in this research direction.
-        </p>
-        <p>
-          Our recent <a href="https://arxiv.org/abs/2411.11761">Survey on the Space of Human Feedback</a> presents a survey of feedback types used in RLHF research and beyond.
-          Our work contributes to this by providing a comprehensive evaluation of the performance of different feedback types in a broad set of environments.
-        </p>
+        <div class="content has-text-justified">
+          <p>
+            Our work is in a series of recent efforts to expand the space of feedback types for RLHF:
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2308.04332">RLHF-Blender</a> presents an architecture and user interface implementation for the collection of multiple feedback types.
+            Our work ties into this by implementing reward models and RL agent training for the feedback types collected by RLHF-Blender.
+            Going beyond synthetic feedback generation by incorporating human feedback is an exiting next step in this research direction.
+          </p>
+          <p>
+            Our recent <a href="https://arxiv.org/abs/2411.11761">Survey on the Space of Human Feedback</a> presents a survey of feedback types used in RLHF research and beyond.
+            Our work contributes to this by providing a comprehensive evaluation of the performance of different feedback types in a broad set of environments.
+          </p>
+        </div>
       </div>
     </div>
   </div>
