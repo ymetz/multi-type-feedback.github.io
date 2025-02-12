@@ -1,5 +1,5 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
 }
 
 
@@ -24,11 +24,12 @@ body {
 }
 
 .teaser {
-  font-family: 'Google Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
 }
 
 
 .publication-title {
+  font-family: 'Geist', sans-serif;
 }
 
 .publication-banner {
